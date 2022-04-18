@@ -115,3 +115,12 @@ func getJSONPage(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(post.Link))
 	}
 }
+
+func serveHTTP(w http.ResponseWriter, r *http.Request) {
+	// fmt.Fprintln(w, "Test of protocol HTTP", nil)
+	t, err := template.ParseFiles("ui/html/index.html")
+	if err != nil {
+		panic(err)
+	}
+	t.Execute(w, nil)
+}

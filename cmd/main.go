@@ -11,6 +11,7 @@ func main() {
 	m.HandleFunc("/", homePage)
 	m.HandleFunc("/get", getPage)
 	m.HandleFunc("/getJSON", getJSONPage)
+	m.HandleFunc("/servehttp", serveHTTP)
 	// Создайте сервер, прослушивающий порт 8000.
 	log.Println("Starting a web server at http://127.0.0.1:8000")
 	s := &http.Server{
