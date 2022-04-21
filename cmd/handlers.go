@@ -36,6 +36,11 @@ func check(err error) {
 
 // https://learntutorials.net/ru/go/topic/756/http-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80
 func homePage(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello!"))
+}
+
+// https://learntutorials.net/ru/go/topic/756/http-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80
+func vvodPage(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		t, err := template.ParseFiles("ui/html/home.page.html")
 		check(err)
@@ -50,7 +55,6 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 		t.Execute(w, myUser)
 	}
 }
-
 
 // https://learntutorials.net/ru/go/topic/1422/http-%d0%ba%d0%bb%d0%b8%d0%b5%d0%bd%d1%82
 func getPage(w http.ResponseWriter, r *http.Request) {
@@ -117,8 +121,15 @@ func getJSONPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func serveHTTP(w http.ResponseWriter, r *http.Request) {
-	// fmt.Fprintln(w, "Test of protocol HTTP", nil)
-	t, err := template.ParseFiles("ui/html/index.html")
+	t, _ := template.ParseFiles("ui/html/index.html")
+	// if err != nil {
+	// 	panic(err)
+	// }
+	t.Execute(w, nil)
+}
+
+func zadacha1(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles("ui/html/zadacha1.html")
 	if err != nil {
 		panic(err)
 	}

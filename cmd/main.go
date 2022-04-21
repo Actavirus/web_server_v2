@@ -9,9 +9,11 @@ func main() {
 	m := http.NewServeMux()
 	// Все URL-адреса будут обрабатываться этой функцией
 	m.HandleFunc("/", homePage)
+	m.HandleFunc("/vvod", vvodPage)
 	m.HandleFunc("/get", getPage)
 	m.HandleFunc("/getJSON", getJSONPage)
 	m.HandleFunc("/servehttp", serveHTTP)
+	m.HandleFunc("/zadacha1", zadacha1)
 	// Создайте сервер, прослушивающий порт 8000.
 	log.Println("Starting a web server at http://127.0.0.1:8000")
 	s := &http.Server{
