@@ -1,12 +1,6 @@
-<html lang='en'></html>
-<head>
-    <title>  Homepage </title>
-</head>
-<body>
-    <form method="POST" action="/">
-        Enter Name: <input type="text" name="entered_name">
-        Enter Nationality: <input type="text" name="entered_nationality">
-        <input type="submit" value="Greet me!">
-    </form>
-</body>
-</html>
+{{template "base" .}}
+{{define "title"}}Home page{{end}}
+{{define "main"}}
+<h2>last notes</h2>
+<p>While there is nothing here.</p>
+{{end}}

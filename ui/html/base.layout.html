@@ -1,0 +1,19 @@
+{{define "base"}}
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <title>{{template "title" .}} - Golang programming language</title>
+    </head>
+    <body>
+        <header>
+            <h1><a href='/'>Golang language</a></h1>
+        </header>
+        <nav>
+            <a href='/'>Home page</a>
+        </nav>
+        <main>
+            {{template "main" .}}
+        </main>
+    </body>
+</html>
+{{end}}

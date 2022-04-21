@@ -36,7 +36,17 @@ func check(err error) {
 
 // https://learntutorials.net/ru/go/topic/756/http-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80
 func homePage(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello!"))
+	files := []string{
+		"./ui/html/home.page.html",
+		"./ui/html/base.layout.html",
+	}
+	t, err := template.ParseFiles(files...)
+	if err != nil {
+		log.Println(err.Error())
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+	t.Execute(w, nil)
 }
 
 // https://learntutorials.net/ru/go/topic/756/http-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80
