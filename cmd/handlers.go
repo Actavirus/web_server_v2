@@ -39,6 +39,7 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	files := []string{
 		"./ui/html/home.page.html",
 		"./ui/html/base.layout.html",
+		"./ui/html/footer.partial.html",
 	}
 	t, err := template.ParseFiles(files...)
 	if err != nil {
