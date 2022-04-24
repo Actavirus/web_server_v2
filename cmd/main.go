@@ -1,7 +1,8 @@
 package main
+
 import (
-	"net/http"
 	"log"
+	"net/http"
 )
 
 func main() {
@@ -18,17 +19,17 @@ func main() {
 	// Инициализируем FileServer, он будет обрабатывать
 	// HTTP-запросы к статическим файлам из папки "./ui/static".
 	// Обратите внимание, что переданный в функцию http.Dir путь
-	// является относительным корневой папке проекта	
+	// является относительным корневой папке проекта
 	fileServer := http.FileServer(http.Dir("./ui/static"))
-	// Используем функцию mux.Handle() для регистрации обработчика для 
+	// Используем функцию mux.Handle() для регистрации обработчика для
 	// всех запросов, которые начинаются с "/static/". Мы убираем
-	// префикс "/static" перед тем как запрос достигнет http.FileServer	
+	// префикс "/static" перед тем как запрос достигнет http.FileServer
 	m.Handle("/static/", http.StripPrefix("/static", fileServer))
 
 	// Создайте сервер, прослушивающий порт 8000.
 	log.Println("Starting a web server at http://127.0.0.1:8000")
 	s := &http.Server{
-		Addr: ":8000",
+		Addr:    ":8000",
 		Handler: m,
 	}
 	// Продолжайте обрабатывать новые запросы, пока не возникнет ошибка
